@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>System Breach</title>
+    <link rel="manifest" href="manifest.json">
     <style>
         body {
             background-color: black;
@@ -52,20 +53,9 @@
         }
     </style>
     <script>
-        function openFullscreen() {
-            if (document.documentElement.requestFullscreen) {
-                document.documentElement.requestFullscreen();
-            } else if (document.documentElement.mozRequestFullScreen) { // Firefox
-                document.documentElement.mozRequestFullScreen();
-            } else if (document.documentElement.webkitRequestFullscreen) { // Chrome, Safari and Opera
-                document.documentElement.webkitRequestFullscreen();
-            } else if (document.documentElement.msRequestFullscreen) { // IE/Edge
-                document.documentElement.msRequestFullscreen();
-            }
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js');
         }
-        document.addEventListener("DOMContentLoaded", function() {
-            openFullscreen();
-        });
     </script>
 </head>
 <body>
